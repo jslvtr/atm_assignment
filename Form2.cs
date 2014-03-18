@@ -92,15 +92,15 @@ namespace ATMAssignment
 
         private void cashButton_Click(object sender, EventArgs e)
         {
-            if (child.Visible)
-            {
-                MessageBox.Show("Someone else is trying to use this account to take money out right now!");
-            }
-            lock (child)
-            {
-                //new Form3(ref account, this).Show();
-                child.Show();
-            }
+            //if (child.Visible)
+            //{
+            //    MessageBox.Show("Someone else is trying to use this account to take money out right now!");
+            //}
+            //lock (child)
+            //{
+                new Form3(ref account, this).Show();
+                //child.Show();
+            //}
             
         }
     }

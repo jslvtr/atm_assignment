@@ -13,8 +13,8 @@ namespace ATMAssignment
         private int balance, pin, number;
         private string name;
         private Object lockObject = new Object();
-        public Thread t;
-        public fundsWithdrawn fundWithdrawnVariable;
+        public List<Thread> t;
+        public List<fundsWithdrawn> fundWithdrawnVariable;
         public delegate void fundsWithdrawn(int decrease, int currentBalance);
 
         public Account(int balance, int pin, int number, string name)
@@ -23,6 +23,8 @@ namespace ATMAssignment
             this.pin = pin;
             this.number = number;
             this.name = name;
+            this.t = new List<Thread>();
+            this.fundWithdrawnVariable = new List<fundsWithdrawn>();
         }
 
         public int getBalance()
@@ -53,19 +55,23 @@ namespace ATMAssignment
         public void createThread(int decrease, int currentBalance, fundsWithdrawn fundsWithdrawnCallback)
         {
             // Create new thread for withdrawal
-            this.t = new Thread(() =>
+            Thread tmp = new Thread(() =>
             {
                 this.decrementBalance(decrease, currentBalance);
             });
-            t.Start();
-            fundWithdrawnVariable = fundsWithdrawnCallback;
+            t.Add(tmp);
+            tmp.Start();
+            fundWithdrawnVariable.Add(fundsWithdrawnCallback);
         }
 
         public bool decrementBalance(int decrease, int currentBalance)
         {
             if (Form1.paused)
             {
-                this.t.Suspend();
+                for (int i = 0; i < t.Count; i++ )
+                {
+                    if (t.ElementAt(i).ThreadState != System.Threading.ThreadState.Suspended) t.ElementAt(i).Suspend();
+                }
             }
             lock (lockObject)
             {
@@ -73,7 +79,8 @@ namespace ATMAssignment
                 {
                     this.balance -= decrease;
                     Thread.Sleep(100);
-                    fundWithdrawnVariable(decrease, currentBalance);
+                    fundWithdrawnVariable.ElementAt(0)(decrease, currentBalance);
+                    fundWithdrawnVariable.RemoveAt(0);
                     return true;
                 }
                 return false;
@@ -82,8 +89,15 @@ namespace ATMAssignment
 
         public void resume()
         {
-            if(this.t != null && this.t.ThreadState == System.Threading.ThreadState.Suspended) this.t.Resume();
-            Debug.WriteLine("output No." + this.number);
+            for (int i = 0; i < t.Count; i++ )
+            {
+                if (t.ElementAt(i) != null && t.ElementAt(i).ThreadState == System.Threading.ThreadState.Suspended)
+                {
+                    t.ElementAt(i).Resume();
+                    Debug.WriteLine("output No." + this.number);
+                }
+            }
+            
         }
     }
 }
