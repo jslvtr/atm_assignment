@@ -1,0 +1,10 @@
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\bin\Debug\ATMAssignment.exe
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\bin\Debug\ATMAssignment.pdb
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.csprojResolveAssemblyReference.cache
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.Form1.resources
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.Properties.Resources.resources
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.csproj.GenerateResource.Cache
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.exe
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.pdb
+C:\Users\Jose\documents\visual studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.Form2.resources
+C:\Users\Jose\Documents\Visual Studio 2013\Projects\ATMAssignment\ATMAssignment\obj\Debug\ATMAssignment.Form3.resources
